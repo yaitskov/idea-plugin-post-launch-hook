@@ -1,40 +1,37 @@
 <idea-plugin version="2">
     <id>org.dan.idea.postlaunchhook</id>
     <name>Launch programs after Idea Launch</name>
-    <version>1.0</version>
+    <version>0.1</version>
     <vendor email="dyaitskov@gmail.com" url="https://github.com/yaitskov">Horns and Hoofs</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+       <p>The plugin launches executable files at the plugin initialization,
+       i.e. right after Idea start.</p>
+
+       <p>A folder, where scripts are located, is "/home/$USER/.idea-post-launch-hooks".</p>
+
+       <p>I used this plugin to change default value of /proc/$PID/oom_adj.
+          It was hard to set it in the idea.sh because Idea forks
+          and the actual PID is different.
+       </p>
+
+       <p>I wanted to set oom_adj because Idea is a heavy memory consumer
+          and it could relatively safely killed by OOM Killer because of auto save.
+       </p>
     ]]></description>
 
-    <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
-    ]]>
-    </change-notes>
+    <change-notes><![CDATA[]]></change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <idea-version since-build="141.0"/>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
-    -->
-
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-    </extensions>
+    <extensions defaultExtensionNs="com.intellij"/>
 
     <actions>
-        <action id="EditorBasics.org.dan.idea.charremap.EntryPoint"
+        <action id="Init.org.dan.idea.postlaunchhook"
                 class="org.dan.idea.postlaunchhook.EntryPoint"
                 text=""
                 description="">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
-
 </idea-plugin>
